@@ -9,43 +9,40 @@ import Contacts from './pages/Contacts'
 import Projects from './pages/Projects'
 import About from './pages/About'
 
-
-
-import { Toaster } from 'react-hot-toast'
-
+import './App.css'
 
 export default function App() {
-  const PageLayout = ()=> {
-    return(
+  const PageLayout = () => {
+    return (
       <>
         <Header />
         <Outlet />
-        <Footer/>
+        <Footer />
       </>
     )
   }
+
   const pageRoutes = createBrowserRouter([
     {
       path: '/',
       element: <PageLayout />,
       children: [
         {
-          path: '/',
-          element: <Home/>
+          index: true,
+          element: <Home />
         },
         {
-          path: '/Contacts',
-          element: <Contacts/>
+          path: 'contacts',
+          element: <Contacts />
         },
         {
-          path: '/Projects',
-          element: <Projects/>
+          path: 'projects',
+          element: <Projects />
         },
         {
-          path: '/About',
-          element: <About/>
+          path: 'about',
+          element: <About />
         },
-
       ],
       errorElement: <ErrorPage />
     }
@@ -53,8 +50,7 @@ export default function App() {
 
   return (
     <main className='bg-backdrop'>
-      <Toaster/>
-      <RouterProvider router={pageRoutes}></RouterProvider>
+      <RouterProvider router={pageRoutes} />
     </main>
   )
 }

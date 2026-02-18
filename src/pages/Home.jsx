@@ -1,181 +1,229 @@
-import React from 'react'
+import React from 'react';
 import { motion } from 'framer-motion';
-import {construction_guy, house_interior, modern_house, mansion} from "../assets/images"
-import { gridData } from '../data/service_data'
-import { productData } from '../data/project_data'
-import Marquee from "react-fast-marquee";
+import { construction_guy, house_interior, modern_house, mansion } from '../assets/images';
+import { featureData } from '../data/service_data';
+import { productData } from '../data/project_data';
+import Marquee from 'react-fast-marquee';
+import { Link } from 'react-router-dom';
 
-
-
-
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function Home() {
-
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
-   <main>
-     <div>
-     <div className='h-full w-full relative bg-black'>
-  <img src={construction_guy} alt="" className="relative top-0 opacity-50 left-0 w-full h-full object-cover object-top" />
-  
-  <motion.div
-    initial="hidden"
-    animate="visible"
-    variants={fadeInUp}
-    transition={{ duration: 1.0 }}
-    className='absolute inset-0 flex flex-col justify-center items-center text-center text-white text-3xl font-bold p-4'
-  >
-    <h1 className='lg:text-[10rem] md:text-9xl sm:text-6xl font-medium mb-2'>Design</h1>
-    <h1 className='lg:text-[10rem] md:text-9xl sm:text-6xl font-medium mb-2'>Construction</h1>
-    <h1 className='lg:text-[10rem] md:text-9xl sm:text-6xl font-medium'>Technology</h1>
-  </motion.div>
-</div>
-
-      <section id='about_section' className='pt-[15rem] px-2'>
-      <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeInUp}
-            transition={{ duration: 1.0 }}
-            viewport={{ once: true }}
-            className='flex flex-col lg:flex-row justify-between relative'
-          >
-    <div className='lg:mx-32 mx-4'>
-      <p className='text-2xl sm:text-3xl font-thin text-black mb-2'>Residential</p>
-      <h1 className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl w-full lg:w-[40rem] text-black mb-2'>
-        Iconic architecture expertly developed
-      </h1>
-      <p className='text-lg sm:text-xl md:text-2xl py-4 font-normal text-black mb-2'>
-        PIVEA is one of the fast-paced urban real estate development companies in Nigeria. Birthed by a union of leading authorities in housing and construction, we are passionate about providing real estate solutions for all.
-      </p>
-      <div className='flex flex-col sm:flex-row'>
-        <div className='px-3'>
-          <h1 className='text-5xl sm:text-6xl md:text-7xl'>5+</h1>
-          <p className='text-xl sm:text-2xl md:text-3xl w-full sm:w-[12rem] font-thin'>Years of experience</p>
-        </div>
-        <div className='px-3 mt-4 sm:mt-0'>
-          <h1 className='text-5xl sm:text-6xl md:text-7xl'>4x</h1>
-          <p className='text-xl sm:text-2xl md:text-3xl w-full sm:w-[10rem] font-thin'>Builder of the year</p>
-        </div>
-      </div>
-    </div>
-    <div className='relative lg:min-w-[50rem] mt-8 lg:mt-0'>
-      <div className='z-10 min-h-[34rem] relative lg:right-[20rem]'>
-        <img src={house_interior} alt="" className="w-full h-auto max-h-[20rem] sm:max-h-[25rem] lg:max-h-[30rem] max-w-[20rem] mx-auto sticky top-1/2" />
-      </div>
-      <img src={modern_house} alt="" className="w-full h-auto max-h-[40rem] sm:max-h-[50rem] lg:max-h-[55rem] max-w-full lg:max-w-[50rem] mx-auto absolute top-0" />
-    </div>
-  </motion.div>
-</section>
-
-      <section className="w-full px-4 py-[15rem]">
-      <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeInUp}
-            transition={{ duration: 1.0 }}
-            viewport={{ once: true }}
-          >
-      <div class="flex justify-center items-center pb-9">
-  <div class="w-[35rem] text-lg lg:text-5xl text-center">
-    We offer a wide array <br class="lg:hidden" />
-    of services aimed at <br class="lg:hidden" />
-    simplifying your life
-  </div>
-</div>
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-  {gridData.map((item) => (
-                <motion.div key={item.id} className="relative w-full h-[20rem] sm:h-[25rem] lg:h-[30rem] group">
-                  <img src={item.image} alt={item.title} className="w-full h-full object-cover rounded-lg" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-100 rounded-lg"></div>
-                  <div className="absolute inset-x-0 bottom-0 p-4 flex flex-col justify-end text-white space-y-2 transition-all duration-300">
-                    <div className="flex items-center space-x-2 mb-2">
-                      <item.logo className="text-xl sm:text-2xl md:text-3xl" />
-                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold">{item.title}</h3>
-                    </div>
-                    <p className="text-sm max-h-0 overflow-hidden opacity-0 group-hover:max-h-full group-hover:opacity-100 transition-all duration-300">
-                      {item.description}
-                    </p>
-                  </div>
-                </motion.div>
-    ))}
-    </div>
-  </motion.div>
-</section>
-
-<section className="w-full flex flex-col lg:flex-row p-4 lg:p-8 py-[15rem]">
-  {/* Intro Text */}
-  <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeInUp}
-            transition={{ duration: 1.0 }}
-            viewport={{ once: true }}
-            className="w-full lg:w-1/3 lg:sticky top-1/2 lg:h-fit flex items-start justify-center p-4"
-          >
-    <div>
-      <h5 className="text-sm sm:text-base md:text-lg text-gray-700">PORTFOLIO</h5>
-      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mt-2">
-        Making the world a more beautiful place.
-      </h2>
-      <div className="mt-6">
-        <a
-          href="/projects/"
-          className="text-black border border-black px-6 py-2 inline-flex items-center"
-        >
-          View All Projects
-        </a>
-      </div>
-    </div>
-  </motion.div>
-
-  {/* Grid Data */}
-  <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeInUp}
-            transition={{ duration: 1.0 }}
-            viewport={{ once: true }}
-            className="w-full lg:w-[70%] flex flex-col gap-8 mt-8 lg:mt-0 lg:ml-auto"
-          >
-    {productData.map((item) => (
-      <div key={item.id} className="flex flex-col lg:flex-row items-center lg:items-center gap-4 ">
+    <main>
+      {/* ═══════════════════════════════════════════
+          SECTION 1 — HERO
+      ═══════════════════════════════════════════ */}
+      <section className="relative h-screen w-full overflow-hidden bg-dark">
         <img
-          src={item.image}
-          alt={item.title}
-          className="w-full sm:w-[30rem] md:w-[35rem] lg:w-[40rem] h-[20rem] sm:h-[25rem] md:h-[30rem] object-cover"
+          src={construction_guy}
+          alt="Construction site"
+          className="absolute inset-0 w-full h-full object-cover object-top opacity-40"
         />
-        <div className="flex flex-col justify-center w-full lg:w-1/2">
-          <h3 className="text-sm sm:text-sm md:text-md lg:text-md text-black">{item.name}</h3>
-          <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mt-2">{item.title}</h3>
-          <p className="text-gray-600 mt-2">{item.description}</p>
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={fadeInUp}
+          transition={{ duration: 1.2, ease: 'easeOut' }}
+          className="relative z-10 flex flex-col justify-center items-center h-full text-center text-backdrop px-4"
+        >
+          <h1 className="font-display text-hero">Design</h1>
+          <h1 className="font-display text-hero">Construction</h1>
+          <h1 className="font-display text-hero">Technology</h1>
+        </motion.div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          SECTION 2 — ABOUT / RESIDENTIAL
+      ═══════════════════════════════════════════ */}
+      <section className="section-pad px-6 md:px-12 lg:px-20">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeInUp}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: '-100px' }}
+          className="flex flex-col lg:flex-row gap-12 lg:gap-20"
+        >
+          {/* Text column */}
+          <div className="lg:w-1/2 flex flex-col justify-center">
+            <span className="text-xs uppercase tracking-[0.25em] text-muted font-body mb-4">
+              Residential
+            </span>
+            <h2 className="font-display text-heading-xl mb-6">
+              Iconic architecture expertly developed
+            </h2>
+            <p className="font-body text-base md:text-lg text-dark/70 mb-10 max-w-xl leading-relaxed">
+              PIVEA is one of the fast-paced urban real estate development companies in Nigeria.
+              Birthed by a union of leading authorities in housing and construction, we are
+              passionate about providing real estate solutions for all.
+            </p>
+
+            {/* Stats */}
+            <div className="flex gap-12">
+              <div>
+                <h3 className="font-display text-5xl md:text-6xl text-dark">5+</h3>
+                <p className="font-body text-sm text-muted mt-1">Years of experience</p>
+              </div>
+              <div>
+                <h3 className="font-display text-5xl md:text-6xl text-dark">4x</h3>
+                <p className="font-body text-sm text-muted mt-1">Builder of the year</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Image column — overlapping effect */}
+          <div className="lg:w-1/2 relative min-h-[30rem] md:min-h-[40rem]">
+            <img
+              src={modern_house}
+              alt="Modern house exterior"
+              className="w-full h-[28rem] md:h-[36rem] object-cover"
+            />
+            <img
+              src={house_interior}
+              alt="House interior"
+              className="absolute -bottom-8 -left-6 md:-left-12 w-48 md:w-64 h-48 md:h-64 object-cover border-4 border-backdrop shadow-2xl"
+            />
+          </div>
+        </motion.div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          SECTION 3 — SERVICES HEADLINE
+      ═══════════════════════════════════════════ */}
+      <section className="section-pad px-6 md:px-12 lg:px-20">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeInUp}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="max-w-3xl mx-auto text-center"
+        >
+          <h2 className="font-display text-heading-xl mb-6">
+            We offer a wide array of services aimed at simplifying your life
+          </h2>
+          <span className="text-xs uppercase tracking-[0.25em] text-muted font-body">
+            Beautiful design &amp; robust options
+          </span>
+        </motion.div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          SECTION 4 — FEATURES GRID
+      ═══════════════════════════════════════════ */}
+      <section className="px-6 md:px-12 lg:px-20 pb-section">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+          {featureData.map((item, i) => (
+            <motion.div
+              key={item.id}
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeInUp}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className="group border border-border-warm p-8 md:p-10 transition-colors duration-500 hover:bg-dark hover:border-dark"
+            >
+              <item.icon className="text-3xl text-accent mb-6 transition-colors group-hover:text-backdrop" />
+              <h3 className="font-display text-xl md:text-2xl mb-3 transition-colors group-hover:text-backdrop">
+                {item.title}
+              </h3>
+              <p className="font-body text-sm text-dark/60 leading-relaxed transition-colors group-hover:text-backdrop/70">
+                {item.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
-      </div>
-    ))}
-  </motion.div>
-</section>
-<section className='relative py-80 w-full h-full'>
-      {/* Background image */}
-      <img src={mansion} alt="Background" className='absolute inset-0 w-full h-full object-cover' />
-      
-      {/* Marquee text */}
-      <div className='relative z-10'>
-        <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();" loop="infinite" className='text-center'>
-          <h1 className='text-[9rem] md:text-[6rem] sm:text-[4rem] font-bold text-white'>Pivea Architecture   Pivea Architecture   Pivea Architecture   Pivea Architecture   Pivea Architecture   Pivea Architecture   Pivea Architecture   Pivea Architecture   Pivea Architecture   Pivea Architecture</h1>
-        </marquee>
-        <marquee behavior="scroll" direction="right" onmouseover="this.stop();" onmouseout="this.start();" loop="infinite" className='text-center'>
-          <h1 className='text-[9rem] md:text-[6rem] sm:text-[4rem] font-bold text-white'>Pivea Architecture   Pivea Architecture   Pivea Architecture   Pivea Architecture   Pivea Architecture   Pivea Architecture   Pivea Architecture   Pivea Architecture   Pivea Architecture   Pivea Architecture</h1>
-        </marquee>
-      </div>
-    </section>
+      </section>
 
+      {/* ═══════════════════════════════════════════
+          SECTION 5 — PORTFOLIO
+      ═══════════════════════════════════════════ */}
+      <section className="section-pad px-6 md:px-12 lg:px-20 flex flex-col lg:flex-row gap-12">
+        {/* Sticky sidebar */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeInUp}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="lg:w-1/3 lg:sticky lg:top-32 lg:self-start"
+        >
+          <span className="text-xs uppercase tracking-[0.25em] text-muted font-body mb-4 block">
+            Portfolio
+          </span>
+          <h2 className="font-display text-heading-lg mb-8">
+            Making the world a more beautiful place.
+          </h2>
+          <Link
+            to="/projects"
+            className="inline-block font-body text-sm border border-dark px-6 py-3 tracking-wide uppercase transition-all duration-300 hover:bg-dark hover:text-backdrop"
+          >
+            View All Projects
+          </Link>
+        </motion.div>
 
-    </div>
-   </main>
+        {/* Scrolling project cards */}
+        <div className="lg:w-2/3 flex flex-col gap-16">
+          {productData.map((item, i) => (
+            <motion.div
+              key={item.id}
+              initial="hidden"
+              whileInView="visible"
+              variants={fadeInUp}
+              transition={{ duration: 0.7, delay: i * 0.1 }}
+              viewport={{ once: true, margin: '-50px' }}
+              className="flex flex-col md:flex-row gap-6 items-start"
+            >
+              <div className="w-full md:w-2/3 overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-[20rem] md:h-[28rem] object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </div>
+              <div className="md:w-1/3 flex flex-col justify-center pt-2">
+                <span className="text-xs uppercase tracking-[0.2em] text-muted font-body mb-2">
+                  {item.name}
+                </span>
+                <h3 className="font-display text-xl md:text-2xl lg:text-3xl mb-3">{item.title}</h3>
+                <p className="font-body text-sm text-dark/60 leading-relaxed">{item.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
-  )
+      {/* ═══════════════════════════════════════════
+          SECTION 6 — MARQUEE
+      ═══════════════════════════════════════════ */}
+      <section className="relative py-32 md:py-48 overflow-hidden">
+        <img
+          src={mansion}
+          alt="Luxury mansion"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-dark/50" />
+        <div className="relative z-10 flex flex-col gap-4">
+          <Marquee speed={60} gradient={false}>
+            {[...Array(6)].map((_, i) => (
+              <span key={`a-${i}`} className="font-display text-6xl md:text-8xl lg:text-9xl text-backdrop/90 mx-8 whitespace-nowrap">
+                Pivea Architecture
+              </span>
+            ))}
+          </Marquee>
+          <Marquee speed={60} direction="right" gradient={false}>
+            {[...Array(6)].map((_, i) => (
+              <span key={`b-${i}`} className="font-display text-6xl md:text-8xl lg:text-9xl text-backdrop/90 mx-8 whitespace-nowrap">
+                Pivea Real Estate
+              </span>
+            ))}
+          </Marquee>
+        </div>
+      </section>
+    </main>
+  );
 }
